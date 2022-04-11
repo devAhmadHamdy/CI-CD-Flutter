@@ -67,8 +67,12 @@ jobs:
         ln -s ../Runner.app
         cd ..
         zip -r app.ipa Payload
-    - name: Upload IPA
-      uses: wzieba/Firebase-Distribution-Github-Action@v1.0.0
+  upload_ios:
+    name: Upload iOS Beta to Firebase App Distribution
+    needs: [ beta_ios ]
+    runs-on: ubuntu-latest
+    steps:
+     - uses: wzieba/Firebase-Distribution-Github-Action@v1.0.0
       with:
         appId: ${{ secrets.IOS_APP_ID }}
         token: ${{ secrets.FIREBASE_TOKEN }}
