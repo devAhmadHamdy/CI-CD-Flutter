@@ -77,7 +77,7 @@ jobs:
         appId: ${{ secrets.IOS_APP_ID }}
         token: ${{ secrets.FIREBASE_TOKEN }}
         groups: testers
-        file: build/ios/iphoneos/app.ipa
+        file: build/ios/iphoneos/Payload/app.ipa
 #    - name: Push to Releases
 #      uses: ncipollo/release-action@v1
 #      with:
