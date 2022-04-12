@@ -72,12 +72,17 @@ jobs:
     needs: [ beta_ios ]
     runs-on: ubuntu-latest
     steps:
-    - uses: wzieba/Firebase-Distribution-Github-Action@v1.0.0
-      with:
-        appId: ${{ secrets.IOS_APP_ID }}
-        token: ${{ secrets.FIREBASE_TOKEN }}
-        groups: testers
-        file: /Users/runner/work/ci-cd-flutter/ci-cd-flutter/build/ios/iphoneos/Payload/app.ipa
+      # Upload generated apk to the artifacts.
+      - uses: actions/upload-artifact@v1
+        with:
+          name: release-ipa
+          path: build/ios/iphoneos/app.ipa
+#    - uses: wzieba/Firebase-Distribution-Github-Action@v1.0.0
+#      with:
+#        appId: ${{ secrets.IOS_APP_ID }}
+#        token: ${{ secrets.FIREBASE_TOKEN }}
+#        groups: testers
+#        file: /Users/runner/work/ci-cd-flutter/ci-cd-flutter/build/ios/iphoneos/Payload/app.ipa
 #    - name: Push to Releases
 #      uses: ncipollo/release-action@v1
 #      with:
